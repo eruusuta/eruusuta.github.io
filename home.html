@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Main</title>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?ga=GA1.1.1160075450.1730121164&semt=ais_siglip');
+            width: 100%;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .welcome-message {
+            width: 500px; 
+            overflow-wrap: break-word;
+            white-space: normal; 
+        }
+
+        .links {
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .logo {
+            cursor: pointer;
+        }
+
+        .animate-click {
+            animation: scaleUp 1s ease;
+        }
+
+        @keyframes scaleUp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .login-signup button {
+            background-color: transparent;
+            border: 2px solid #ffffff; 
+            color: #ffffff; 
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .login-signup button:hover {
+            background-color: #ffffff; 
+            color: #000000; 
+        }
+
+        .links ul li a {
+            color: #ffffff; 
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+        
+        .links ul li a:hover {
+            color: grey;
+            text-decoration: #000000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="https://www.facebook.com/groups/706758746069879">
+                <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/462116111_3061095900698632_3691388022954901051_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=2285d6&_nc_eui2=AeFWr9PL28-hyirUfvzPpfGNFxMVGDmq8QwXExUYOarxDNXVa9oGCuo3TRMwZ9XJ1i4e544tv4xcKhcuZGP2e24p&_nc_ohc=AjBevhiIb40Q7kNvgH3Upuc&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Avbaif_g6D-EPsyPY6zyB7r&oh=00_AYBi2E7nsGB8pJIXSYeOWFDTLfCs5vK4NfqiEpRty8ZBXw&oe=6723FB26" 
+                alt="Image" class="logo" onclick="animateImage(this)">
+            </a>
+            <div class="links">
+                <ul>
+                    <li><a class="home" href="#">Home</a></li>
+                    <li><a href="about.html">About</a></li> 
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="login-signup">
+                <a href="login_page.html"><button id="login">Login</button></a>
+                <a href="admin.html"><button id="admin-login">Admin</button></a>
+            </div>
+        </nav>
+    </header>
+    <div class="home-content">
+        <div class="home-container">
+            <h1 id="headerText">Welcome to Asian Learning Center Health Card System!</h1>
+            <p class="welcome-message" id="welcomeMessage">
+                We are dedicated to ensuring that all students at Asian Learning Center have easy and secure access to their health information.
+                With this system, managing and updating your health records has never been simpler.
+                Our goal is to support your well-being by providing a convenient platform for accessing health resources and reports.
+                Thank you for being a part of our community. Let’s work together to promote a healthy and safe learning environment!
+            </p>
+        </div>
+    </div>
+    <script>
+        //animation text
+        document.addEventListener("DOMContentLoaded", function() {
+            const text = document.getElementById("welcomeMessage").textContent;
+            const welcomeMessage = document.getElementById("welcomeMessage");
+            welcomeMessage.textContent = ""; 
+
+            let i = 0;
+            function typeWriter() {
+                if (i < text.length) {
+                    welcomeMessage.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 10);
+                }
+            }
+
+            typeWriter();
+
+            const headerText = document.getElementById("headerText").textContent;
+            const headerElement = document.getElementById("headerText");
+            headerElement.textContent = "";
+
+            let j = 0;
+            function typeHeader() {
+                if (j < headerText.length) {
+                    headerElement.textContent += headerText.charAt(j);
+                    j++;
+                    setTimeout(typeHeader, 20); 
+                }
+            }
+
+            typeHeader();
+        });
+
+        //animation when clicking image
+        function animateImage(img) {
+            img.classList.add("animate-click");
+            img.addEventListener("animationend", () => {
+                img.classList.remove("animate-click");
+            }, { once: true });
+        }
+    </script>
+</body>
+</html>

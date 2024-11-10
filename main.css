@@ -1,0 +1,334 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?ga=GA1.1.1160075450.1730121164&semt=ais_siglip');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #e0e0e0; 
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.container {
+    backdrop-filter: blur(10px);
+    max-width: 1500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2 {
+    color: grey; 
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 90%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(42, 42, 42, 0.8);
+    color: grey;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+    margin-left: 35px;
+    margin-bottom: 10px;
+}
+
+.form-control:focus {
+    background-color: rgba(51, 51, 51, 0.9);
+    border-color: #5bc0de;
+    box-shadow: 0 0 5px rgba(91, 192, 222, 0.8);
+}
+
+.form-control::placeholder {
+    color: rgba(200, 200, 200, 0.8);
+}
+
+.button2 {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    margin-top: 15px; 
+}
+
+.button2:hover {
+    background-color: skyblue;
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.button2:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+}
+
+.back-button {
+    background-color: grey;
+    color: #ffffff; 
+    padding: 10px 20px; 
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 5px; 
+    text-decoration: none; 
+    display: inline-block; 
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.back-button:hover {
+    background-color: darkred;
+}
+
+.back-buttons {
+    background-color: grey;
+    color: #ffffff; 
+    padding: 10px 20px; 
+    margin-top: 15px;
+    margin-left: 20px;
+    border-radius: 5px; 
+    text-decoration: none; 
+    display: inline-block; 
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.back-buttons:hover {
+    background-color: darkred;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+table th {
+    background-color: rgba(30, 30, 30, 0.8);
+}
+
+table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .form-control {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .button2 {
+        padding: 10px 15px;
+    }
+}
+
+ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+li {
+    align-items: center;
+    font-style: bold;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px; 
+    border-radius: 20px;
+}
+
+.nav-link {
+    transition: transform 0.3s ease;
+}
+
+.nav-link.clicked {
+    animation: bounce 0.3s ease forwards; 
+}
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.training {
+    align-items: center;
+    font-style: bold;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px; 
+    border-radius: 20px;
+    background-color: grey;
+    background-size: 20px;
+}
+
+.logout {
+    background-color: grey;
+    color: #ffffff; 
+    padding: 5px 14px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    display: inline-block; 
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    align-self: flex-end;
+}
+
+.logout:hover {
+    background-color: darkred;
+}
+
+.email {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    width: 10%;
+    margin-top: 15px; 
+}
+
+.email:hover {
+    background-color: skyblue;
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.email:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+}
+
+.email-link {
+    text-decoration: none;
+}
+
+.form-image2 {
+    position: relative;
+    height: fit-content; 
+    width: fit-content; 
+    max-width: 100%; 
+    margin-bottom: 20px; 
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: -10px 0px 10px grey;
+}
+
+.button0 {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    width: 20%;
+    margin-top: 15px; 
+}
+
+.button0:hover {
+    background-color: transparent;
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.button0:focus {
+    outline: none;
+}
+
+.custom-placeholder::placeholder {
+    color: white;
+}
+
+.delete-button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: red; 
+}
+
+.edit-button {
+    background-color: goldenrod;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.edit-button:hover {
+    background-color: gold;
+}
+
+.healthcard {
+    color: #ffffff;
+    margin-bottom: 80px;
+    margin-right: 80px;
+    text-align: center;
+}
+

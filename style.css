@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+h1, .welcome-message {
+    color: white;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 100px;
+    font-style: normal;
+    text-align: justify;
+}
+
+nav {
+    width: 100%;
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+   width: 120px;
+   height: 120px;
+   border-radius: 100%; 
+   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+.links ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+.links li a {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+
+li a:hover {
+    background-color: white;
+    text-decoration: black;
+}
+
+.links {
+    transition: transform 0.1s ease, color 0.3s;
+}
+
+.links:active {
+    transform: scale(0.95);
+    color: white;
+}
+
+.home {
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    padding: 10x;
+    margin: 5px
+}
+
+.login-signup button {
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100px;
+    position: relative;
+    margin-bottom: 5px;
+    background-color: grey;
+    transition: transform 1s ease;
+}
+
+
+.login-signup button:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?ga=GA1.1.1160075450.1730121164&semt=ais_siglip');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #e0e0e0; 
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-sizing: border-box;
+}
+
+
+.container {
+    text-align: center;
+    backdrop-filter: blur(10px);
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(30, 30, 30, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease;
+}
+
+
+h1, h2 {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.healthcard {
+    color: #ffffff;
+    margin-bottom: 80px;
+    margin-right: 80px;
+    text-align: center;
+}
+
+.form-control {
+    width: 100%;
+    height: 20%;
+    padding: 12px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(42, 42, 42, 0.8);  
+    color: #e0e0e0;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    background-color: rgba(51, 51, 51, 0.9);
+    border-color: grey;
+    box-shadow: 0 0 5px rgba(91, 192, 222, 0.8);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.8); 
+}
+
+
+.button1 {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    width: 53%;
+    margin-top: 15px; 
+    width: 100%; 
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.button1:hover {
+    background-color: white;
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.button1:focus {
+    outline: none;
+    box-shadow: 0 0 10px white;
+}
+
+a {
+    text-size-adjust: 20px;
+    color: white;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.fade-in {
+    animation: fadeIn 2s forwards; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.form-image {
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    float: left;
+    margin-right: 10px;
+    box-shadow: -10px 0px 10px black;
+}
+
+.form-image2 {
+    position: relative;
+    height: 200px; 
+    width: 350px; 
+    max-width: 100%; 
+    margin-bottom: 20px; 
+    display: block; 
+    margin-left: 250px;
+    margin-right: auto;
+    border-radius: 100%;
+    box-shadow: -10px 0px 10px black;
+}
+
+.form-wrapper {
+    display: block;
+    text-align: center;
+}
+
+.form-content {
+    margin: 0 auto;
+    width: 100%; 
+    max-width: 400px;
+}
+
+p{
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .form-wrapper {
+        width: 100%; 
+    }
+
+    .form-control, .button {
+        width: 100%;
+    }
+}
+
+
+.form-control2 {
+    width: 70%;
+    height: 50%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(42, 42, 42, 0.8);
+    color: #e0e0e0;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-bottom: 15px;
+    align-content: end;
+}
+
+.form-control2:focus {
+    background-color: rgba(51, 51, 51, 0.9);
+    border-color: grey;
+    box-shadow: 0 0 5px grey;
+}
+
+.form-control2::placeholder {
+    color: rgba(200, 200, 200, 0.8);
+}
+
+.button-login1 {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px; 
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    width: 70%;
+    margin-top: 15px; 
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.button-login1:hover {
+    background-color: white;
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.button-login1:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards; 
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards; 
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

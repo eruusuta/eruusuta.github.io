@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <a href="home.html" class="back-button" style="margin-bottom: 20px;">Back</a>
+        <h1>Contact Us</h1>
+        <form id="contactForm" action="send_message2.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required class="form-control"><br>
+            <input type="email" name="email" placeholder="Your Email" required class="form-control"><br>
+            <input type="text" name="phone" placeholder="Your Phone" class="form-control"><br>
+            <textarea name="message" placeholder="Your Message" required class="form-control"></textarea><br>
+            <button type="submit" class="button2">Send Message</button><br><br>
+            <a href="mailto:examplehealthcard@gmail.com" style="text-decoration: none;">
+                <h4 class="email"><center>Email Us</center></h4>
+            </a>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
