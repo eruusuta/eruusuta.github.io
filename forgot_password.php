@@ -1,40 +1,40 @@
 <?php
-include('db_connect.php');
+include('db.php'); // Ensure this is using PDO to connect to the database
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
 
-    $query = "SELECT * FROM users WHERE email = ?";
+    // Use PDO to prepare and execute the query
+    $query = "SELECT * FROM users WHERE email = :email";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('s', $email);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
+
+    if ($stmt->rowCount() > 0) {
         $token = bin2hex(random_bytes(16)); 
         $expiry = date('Y-m-d H:i:s', strtotime('+1 hour')); 
     
-        $updateQuery = "UPDATE users SET reset_token = ?, reset_token_expiry = ? WHERE email = ?";
+        // Update the database with the reset token and expiry time
+        $updateQuery = "UPDATE users SET reset_token = :token, reset_token_expiry = :expiry WHERE email = :email";
         $updateStmt = $conn->prepare($updateQuery);
-        $updateStmt->bind_param('sss', $token, $expiry, $email);
+        $updateStmt->bindParam(':token', $token, PDO::PARAM_STR);
+        $updateStmt->bindParam(':expiry', $expiry, PDO::PARAM_STR);
+        $updateStmt->bindParam(':email', $email, PDO::PARAM_STR);
         $updateStmt->execute();
 
-        // The reset link
+        // Construct the reset link
         $resetLink = "https://eruusuta.github.io/reset_password.php?token=$token";
-        
-        // Output for JavaScript to handle email sending
+
+        // Now echo a script to trigger EmailJS email sending.
         echo "<script type='text/javascript'>
-                function sendEmail() {
-                    emailjs.send('service_hr3leqd', 'template_ietxcck', {
-                        to_email: '$email',
-                        reset_link: '$resetLink'
-                    }).then(response => {
-                        alert('Password reset link sent!');
-                    }).catch(error => {
-                        alert('Error sending email.');
-                    });
-                }
-                sendEmail();
+                emailjs.send('service_6m3e5yp', 'template_0vic8sk', {
+                    to_email: '$email',
+                    reset_link: '$resetLink'
+                }).then(response => {
+                    alert('Password reset link sent!');
+                }).catch(error => {
+                    alert('Error sending email: ' + error);
+                });
               </script>";
         
         echo "Password reset link has been sent to your email.";
