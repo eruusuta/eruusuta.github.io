@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $updateStmt->bind_param('sss', $token, $expiry, $email);
         $updateStmt->execute();
 
-        $resetLink = "http://yourdomain.com/reset_password.php?token=$token";
+        $resetLink = "https://eruusuta.github.io/reset_password.php?token=$token";
         emailjs.send("service_hr3leqd", "template_ietxcck", {
             to_email: $email,
             reset_link: $resetLink
