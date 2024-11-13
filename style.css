@@ -8,6 +8,19 @@
     font-optical-sizing: auto;
 }
 
+@media (min-width: 600px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
 h1, .welcome-message {
     color: white;
     position: relative;

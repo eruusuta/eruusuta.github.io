@@ -15,3 +15,16 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 5px #ffffff;
     border-color: #ffffff;
 }
+
+@media (min-width: 600px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
