@@ -137,7 +137,7 @@ if ($result->num_rows > 0) {
             <a href="edit_photo.php" class="edit-button">Edit</a>
         </div>
 
-        <form action="update_profile.php" method="POST">
+        <form action="update_profile.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
 
             <label for="name" class="form-label">Name</label>
@@ -156,7 +156,7 @@ if ($result->num_rows > 0) {
             <input type="text" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" class="form-control" required>
 
             <label for="address" class="form-label">Address</label>
-            <input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" class="form-control" required> 
+            <input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" class="form-control" required>
 
             <button type="submit" class="btn btn-primary">Update Information</button>
         </form>

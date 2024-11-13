@@ -30,6 +30,9 @@ try {
     <title>Student List</title>
     <link rel="stylesheet" href="main.css">
     <style>
+    body {
+        background-image: url('https://img.freepik.com/premium-photo/stethoscope-medicine-accessories-black-background-with-copy-space_362520-268.jpg?ga=GA1.1.1160075450.1730121164&semt=ais_siglip');
+    }
     .container {
         margin-top: 100px;
         width: 90%;

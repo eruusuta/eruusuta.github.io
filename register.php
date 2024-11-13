@@ -5,7 +5,7 @@ $password = "Iamwelster64";
 $dbname = "health_card_system";
 $alertMessage = "";
 
-// Connect to the database using PDO - PHP Data Objects
+//connect to the database using PDO - PHP Data Objects
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

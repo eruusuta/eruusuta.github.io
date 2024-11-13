@@ -53,6 +53,34 @@ include 'db.php';
         .button2:hover {
             background-color: transparent;
         }
+
+        .delete-button {
+            padding: 5px 10px;
+            background-color: darkred;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .delete-button:hover {
+            background-color: red;
+        }
+
+        .edit-button {
+            background-color: goldenrod;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .edit-button:hover {
+            background-color: gold;
+        }
     </style>
 </head>
 <body>
@@ -112,101 +140,97 @@ include 'db.php';
 
         <button class="button2 toggle" id="toggle-button" onclick="toggleForm()">Add New Item</button>
     </div>
-   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    fetchInventory();
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchInventory();
 
-    function fetchInventory(searchTerm = '') {
-        fetch(`get_inventory.php?search=${searchTerm}`)
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.getElementById('inventory-body');
-                tbody.innerHTML = ''; 
-                data.forEach(item => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${item.item_name}</td>
-                        <td>${item.quantity}</td>
-                        <td>${item.location}</td>
-                        <td>
-                            <button class="edit-button" onclick="editItem(${item.id})">Edit</button>
-                            <button class="delete-button" onclick="deleteItem(${item.id})">Delete</button>
-                        </td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            })
-            .catch(error => console.error("Error fetching inventory:", error));
-    }
+            function fetchInventory(searchTerm = '') {
+                fetch(`get_inventory.php?search=${searchTerm}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById('inventory-body');
+                        tbody.innerHTML = ''; 
+                        data.forEach(item => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${item.item_name}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.location}</td>
+                                <td>
+                                    <button class="edit-button" onclick="editItem(${item.id})">Edit</button>
+                                    <button class="delete-button" onclick="deleteItem(${item.id})">Delete</button>
+                                </td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                    })
+                    .catch(error => console.error("Error fetching inventory:", error));
+            }
 
-    window.deleteItem = function(id) {
-        fetch(`delete_item.php?id=${id}`, { method: 'GET' })
-            .then(() => fetchInventory())
-            .catch(error => console.error("Error deleting item:", error));
-    };
-
-    // Toggle Add New Item form visibility
-    window.toggleForm = function() {
-        const form = document.getElementById('add-item-form');
-        const button = document.getElementById('toggle-button');
-        
-        // Hide the Edit form if it's visible
-        document.getElementById('edit-item-form').style.display = 'none';
-
-        // Toggle visibility of the Add New Item form
-        if (form.style.display === 'none') {
-            form.style.display = 'block';
-            button.textContent = 'Close'; 
-        } else {
-            form.style.display = 'none';
-            button.textContent = 'Add New Item'; 
-        }
-    };
-
-    window.searchInventory = function() {
-        const searchTerm = document.getElementById('search-input').value;
-        fetchInventory(searchTerm);
-    };
-
-    // Edit item logic
-    window.editItem = function(id) {
-        fetch(`get_inventory.php?id=${id}`)
-            .then(response => response.json())
-            .then(item => {
-                if (item) {
-                    // Hide the Add New Item form and show the Edit form
-                    document.getElementById('add-item-form').style.display = 'none';
-                    document.getElementById('edit-item-form').style.display = 'block';
-
-                    // Hide the "Add New Item" button when editing
-                    document.getElementById('toggle-button').style.display = 'none';
-
-                    // Fill in the fields with the item data
-                    document.getElementById('edit-item-id').value = item.id;
-                    document.getElementById('edit-item-name').value = item.item_name;
-                    document.getElementById('edit-item-quantity').value = item.quantity;
-                    document.getElementById('edit-item-location').value = item.location;
-                } else {
-                    console.error("Item not found");
+            window.deleteItem = function(id) {
+                const isConfirmed = confirm("Are you sure you want to delete this item?");
+                if (isConfirmed) {
+                    fetch(`delete_item.php?id=${id}`, { method: 'GET' })
+                        .then(() => fetchInventory())
+                        .catch(error => console.error("Error deleting item:", error));
                 }
-            })
-            .catch(error => console.error("Error fetching item details for edit:", error));
-    };
+            };
 
-    // Cancel edit action
-    window.cancelEdit = function() {
-        // Hide the Edit form
-        document.getElementById('edit-item-form').style.display = 'none';
-        
-        // Reset the Add New Item button text to 'Add New Item'
-        document.getElementById('toggle-button').textContent = 'Add New Item';
+            //toggle item form to visible
+            window.toggleForm = function() {
+                const form = document.getElementById('add-item-form');
+                const button = document.getElementById('toggle-button');
+                
+                //hide the Edit form if its visible
+                document.getElementById('edit-item-form').style.display = 'none';
 
-        // Show the "Add New Item" button again
-        document.getElementById('toggle-button').style.display = 'inline-block';
-        
-        // Do not show the Add New Item form here, leave it hidden until the "Add New Item" button is clicked
-    };
-});
+                //toggle visibility of the add new item form
+                if (form.style.display === 'none') {
+                    form.style.display = 'block';
+                    button.textContent = 'Close'; 
+                } else {
+                    form.style.display = 'none';
+                    button.textContent = 'Add New Item'; 
+                }
+            };
+
+            window.searchInventory = function() {
+                const searchTerm = document.getElementById('search-input').value;
+                fetchInventory(searchTerm);
+            };
+
+            //edit item
+            window.editItem = function(id) {
+                fetch(`get_inventory.php?id=${id}`)
+                    .then(response => response.json())
+                    .then(item => {
+                        if (item) {
+                            //hide the add new item form
+                            document.getElementById('add-item-form').style.display = 'none';
+                            document.getElementById('edit-item-form').style.display = 'block';
+
+                            //hide the new item when click edit
+                            document.getElementById('toggle-button').style.display = 'none';
+
+                            document.getElementById('edit-item-id').value = item.id;
+                            document.getElementById('edit-item-name').value = item.item_name;
+                            document.getElementById('edit-item-quantity').value = item.quantity;
+                            document.getElementById('edit-item-location').value = item.location;
+                        } else {
+                            console.error("Item not found");
+                        }
+                    })
+                    .catch(error => console.error("Error fetching item details for edit:", error));
+            };
+
+            //cancel edit function
+            window.cancelEdit = function() {
+                document.getElementById('edit-item-form').style.display = 'none';
+                document.getElementById('toggle-button').textContent = 'Add New Item';
+                document.getElementById('toggle-button').style.display = 'inline-block';
+                
+            };
+        });
     </script>
 </body>
 </html>

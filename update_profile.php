@@ -1,69 +1,71 @@
 <?php
 session_start();
+require_once 'db.php';  // Make sure this file contains the correct DB connection setup
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// Get the user ID from session
-$user_id = $_SESSION['user_id'];
-
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "Iamwelster64";
-$dbname = "health_card_system";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Update the user's profile data
+// Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the form data
+    // Get the user ID from the session
+    $user_id = $_SESSION['user_id'];
+
+    // Get form values
     $name = $_POST['name'];
     $email = $_POST['email'];
     $age = $_POST['age'];
     $gender = $_POST['gender'];
     $address = $_POST['address'];
     $phone_number = $_POST['phone_number'];
-    $photo = $_FILES['photo']['name'];
 
-    // Check if a photo is uploaded
-    if ($photo) {
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($photo);
-        move_uploaded_file($_FILES['photo']['tmp_name'], $target_file);
+    // Check if a new profile photo is uploaded
+    if ($_FILES['photo']['name']) {
+        $photo = $_FILES['photo'];
+        $photo_name = time() . "_" . basename($photo['name']);
+        $photo_path = 'uploads/' . $photo_name;
+
+        // Move the uploaded photo to the "uploads" directory
+        if (!move_uploaded_file($photo['tmp_name'], $photo_path)) {
+            echo "Error uploading photo.";
+            exit;
+        }
     } else {
-        // If no photo is uploaded, retain the existing photo
-        $sql = "SELECT photo FROM users WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-        $photo = $user['photo']; // Retain the current photo
+        // If no new photo, keep the current photo (optional)
+        $photo_name = $_POST['current_photo'];
     }
 
-    // Update user details in the database
-    $sql = "UPDATE users SET name = ?, email = ?, age = ?, gender = ?, address = ?, phone_number = ?, photo = ? WHERE id = ?";
+    // Debugging: Output the received form data
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+
+    // Prepare and execute the query to update the users table
+    $sql = "UPDATE users SET name = :name, email = :email, age = :age, address = :address, phone_number = :phone_number WHERE id = :id";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssissssi", $name, $email, $age, $gender, $address, $phone_number, $photo, $user_id);
-    $stmt->execute();
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->bindValue(':age', $age, PDO::PARAM_INT);
+    $stmt->bindValue(':address', $address, PDO::PARAM_STR);
+    $stmt->bindValue(':phone_number', $phone_number, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
 
-    if ($stmt->affected_rows > 0) {
-        $_SESSION['success_message'] = "Profile updated successfully!";
+    if ($stmt->execute()) {
+        echo 'User data updated successfully.<br>';
+
+        // Update the students table email
+        $sql = "UPDATE students SET email = :email WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            echo 'Student email updated successfully.<br>';
+
+            // Redirect back to the edit profile page with a success message
+            header('Location: edit_profile.php?update=success');
+            exit;
+        } else {
+            echo 'Error updating student email: ' . $stmt->errorInfo()[2];
+        }
     } else {
-        $_SESSION['error_message'] = "Failed to update profile.";
+        echo 'Error updating user data: ' . $stmt->errorInfo()[2];
     }
-
-    // Redirect back to the profile page
-    header("Location: edit_profile.php");
-    exit();
 }
-
-$conn->close();
 ?>

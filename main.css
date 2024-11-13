@@ -241,7 +241,7 @@ li {
 }
 
 .email:hover {
-    background-color: skyblue;
+    background-color: transparent; /* Removed sky-blue background */
     transform: translateY(-5px);
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
 }
@@ -293,42 +293,3 @@ li {
 .button0:focus {
     outline: none;
 }
-
-.custom-placeholder::placeholder {
-    color: white;
-}
-
-.delete-button {
-    background-color: darkred;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.delete-button:hover {
-    background-color: red; 
-}
-
-.edit-button {
-    background-color: goldenrod;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.edit-button:hover {
-    background-color: gold;
-}
-
-.healthcard {
-    color: #ffffff;
-    margin-bottom: 80px;
-    margin-right: 80px;
-    text-align: center;
-}
-
