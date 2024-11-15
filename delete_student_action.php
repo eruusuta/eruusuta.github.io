@@ -3,7 +3,7 @@ session_start();
 
 //this will check if the user loggedin as admin
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['is_admin'] !== 1) {
-    header("Location: login_page.html"); //it will automatically back if the user is not admin
+    header("Location: login_page.php"); //it will automatically back if the user is not admin
     exit();
 }
 

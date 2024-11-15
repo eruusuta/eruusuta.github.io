@@ -3,7 +3,7 @@ session_start();
 
 //this will ensure if user login as admin
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['is_admin'] !== 1) {
-    header("Location: login_page.html"); 
+    header("Location: login_page.php"); 
     exit();
 }
 

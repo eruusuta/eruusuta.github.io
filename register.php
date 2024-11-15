@@ -84,10 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       </script>";
                 exit();
             } else {
-                $alertMessage = "Error inserting into students table: " . implode(' ', $stmt_student->errorInfo());
+                $alertMessage = "Error inserting into students table please report to administrator: " . implode(' ', $stmt_student->errorInfo());
             }
         } else {
-            $alertMessage = "Error inserting into users table: " . implode(' ', $stmt->errorInfo());
+            $alertMessage = "Error inserting into users table please report to administrator: " . implode(' ', $stmt->errorInfo());
         }
     }
 }

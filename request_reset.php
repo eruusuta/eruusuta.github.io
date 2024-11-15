@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Send the reset email
         $mail = new PHPMailer(true);
-        $resetLink = "http://alcasianlearning.com/reset_password.php?token=$token"; // Replace with your actual domain
+        $resetLink = "https://health-card.lovestoblog.com/reset_password.php?token=$token"; // Replace with your actual domain
 
         try {
             // Server settings
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="POST" action="">
     <input type="email" id="email" name="email" placeholder="Enter Your Email" class="form-control" required>
     <button type="submit" class="button2">Send Reset Link</button>
-    <center><p><a href="login_page.html" style="text-decoration: none; color: white; text-size: 15px;">Login</a></p></center>
+    <center><p><a href="login_page.php" style="text-decoration: none; color: white; text-size: 15px;">Login</a></p></center>
 </form>
 </div>
 </body>

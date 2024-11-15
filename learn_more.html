@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn More - Asian Learning Center Health Card System</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body Styling */
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        padding-top: 150px;
+      }
+
+      /* Navigation */
+      nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .logo img {
+        width: 100px;
+        border-radius: 100%;
+      }
+
+      .links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: #b0b0b0;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: transparent;
+        transition: all 0.3s ease;
+      }
+
+      .links a:hover {
+        color: #ffd700;
+        background-color: rgba(255, 215, 0, 0.2);
+        transform: translateY(-3px);
+      }
+
+      .links a:active {
+        transform: translateY(1px);
+      }
+
+      /* Main Content */
+      .main-content {
+        background-color: #1c1c1c;
+        padding: 40px;
+        max-width: 1000px;
+        margin: 10px auto;
+        border-radius: 10px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s ease-in-out;
+        animation: fadeIn 2s ease-out;
+      }
+
+      /* Fade In Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .main-content h1 {
+        font-size: 3rem;
+        color: #ffd700;
+        margin-bottom: 20px;
+      }
+
+      .main-content p {
+        font-size: 1.15rem;
+        color: #b0b0b0;
+        line-height: 1.7;
+        margin-bottom: 30px;
+      }
+
+      .feature-list {
+        text-align: left;
+        margin-bottom: 30px;
+      }
+
+      .feature-list li {
+        font-size: 1.2rem;
+        color: #d3d3d3;
+        margin-bottom: 10px;
+      }
+
+      .cta-button {
+        background-color: #333333;
+        color: #f4f4f4;
+        padding: 14px 30px;
+        font-size: 18px;
+        border: 2px solid #ffd700;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .cta-button:hover {
+        background-color: #ffd700;
+        color: #121212;
+        transform: scale(1.05);
+      }
+
+      .cta-button:active {
+        transform: scale(0.95);
+      }
+
+      /* Small Screen Adjustments */
+      @media screen and (max-width: 768px) {
+        .main-content {
+          padding: 30px;
+        }
+
+        .main-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .cta-button {
+          padding: 12px 25px;
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <a href="home.html" class="logo">
+        <img
+          src="462116111_3061095900698632_3691388022954901051_n.jpg"
+          alt="Logo"
+        />
+      </a>
+      <div class="links">
+        <a href="home.html">Home</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1>Learn More About Our Health Card System</h1>
+      <p>
+        The Asian Learning Center Health Card System is designed to provide a
+        seamless and secure way for students to manage their health records.
+        With this platform, students can access medical information, track their
+        health history, and stay informed on important health updates.
+      </p>
+
+      <div class="feature-list">
+        <h2>Key Features:</h2>
+        <ul>
+          <li>Secure login and personal information management</li>
+          <li>User-friendly interface with easy navigation</li>
+        </ul>
+      </div>
+
+      <!-- "Get Started" Button -->
+      <a href="login_page.php">
+        <button class="cta-button">Get Started - Login</button>
+      </a>
+    </div>
+  </body>
+</html>

@@ -48,30 +48,22 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="edit.css">
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #121212; 
-            padding-top: 30px;
-            color: white;
-        }
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+    }
 
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #1c1c1c; 
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+        background-color: #1e1e1e;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        margin: auto;
+    }
 
-        h1 {
-            font-size: 1.5rem; 
-            margin-bottom: 20px;
-            color: #fff;
-            text-align: center;
-        }
-
-        .profile-header {
+    .profile-header {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -86,46 +78,28 @@ if ($result->num_rows > 0) {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .edit-button {
-            margin-top: 10px;
-            background-color: #1877f2;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
 
-        .edit-button:hover {
-            background-color: #165e9d;
-        }
+    h1 {
+        font-size: 1.75rem;
+        color: #f1c40f;
+        text-align: center;
+    }
 
-        .form-control {
-            background-color: #333;
-            border: 1px solid #444;
-            border-radius: 5px;
-            padding: 6px 10px; 
-            margin-bottom: 12px; 
-            color: white;
-        }
+    .form-control {
+        background-color: #333;
+        border: 1px solid #444;
+        color: #f1c40f;
+        border-radius: 8px;
+    }
 
-        .form-control:focus {
-            border-color: #1877f2;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        .btn-primary {
-            background-color: #1877f2;
-            border-color: #1877f2;
-            padding: 6px 10px;
-            font-size: 1rem;
-            border-radius: 5px;
-        }
-
-        .btn-primary:hover {
-            background-color: #165e9d;
-            border-color: #165e9d;
-        }
-    </style>
+    .btn-primary {
+        background-color: #f1c40f;
+        color: #121212;
+        border-radius: 8px;
+        padding: 10px 20px;
+        border: none;
+    }
+</style>
 </head>
 <body>
     <a href="main_students.html" class="back-button">Back</a>

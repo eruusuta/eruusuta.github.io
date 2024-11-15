@@ -121,6 +121,7 @@ if ($user) {
                         <input type="checkbox" name="conditions[]" value="Diabetes"> Diabetes<br>
                         <input type="checkbox" name="conditions[]" value="Hypertension"> Hypertension<br>
                         <input type="checkbox" name="conditions[]" value="Heart Disease"> Heart Disease<br>
+                        <input type="checkbox" name="conditions[]" value="NO Allergies"> None<br>
                         <input type="checkbox" name="conditions[]" value="Other"> Other (please specify below)<br>
                         <input type="text" class="form-control" name="other_condition" placeholder="If other, please specify">
                     </div>

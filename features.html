@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functionality - Asian Learning Center Health Card System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 150px;
+            border-radius: 100%;
+        }
+
+        .links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #B0B0B0;
+            font-weight: 500;
+            padding: 10px 20px;  
+            border-radius: 5px;   
+            background-color: transparent; 
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #FFD700;
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .function-section {
+            margin-top: 50px;
+            background-color: #1C1C1C;
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .function-section h2 {
+            font-size: 2.5rem;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .function-list {
+            margin-top: 30px;
+        }
+
+        .function-card {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .function-card h3 {
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .function-card p {
+            font-size: 1.1rem;
+            color: #B0B0B0;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="462116111_3061095900698632_3691388022954901051_n.jpg" alt="Logo">
+        </a>
+        <div class="links">
+            <a href="learn_more.html">Learn More</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="function-section">
+        <h2>System Functions</h2>
+        <div class="function-list">
+            <div class="function-card">
+                <h3>User Registration</h3>
+                <p>Students can register on the platform to create an account and manage their health information.</p>
+            </div>
+
+            <div class="function-card">
+                <h3>Profile Management</h3>
+                <p>Students have full control over their profiles, including editing personal details and medical records.</p>
+            </div>
+
+            <div class="function-card">
+                <h3>Health Alerts</h3>
+                <p>Get notified about important health-related information such as scheduled appointments or medication reminders.</p>
+            </div>
+
+            <div class="function-card">
+                <h3>Reports Access</h3>
+                <p>View and download detailed health reports directly from the platform.</p>
+            </div>
+
+            <div class="function-card">
+                <h3>Admin Dashboard</h3>
+                <p>Admins can monitor student information, update records, and manage user accounts for the health system.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

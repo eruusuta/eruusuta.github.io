@@ -164,7 +164,7 @@ h1, h2 {
 }
 
 .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.8); 
+    color: rgba(255, 255, 255, 0.9) !important; 
 }
 
 
@@ -200,7 +200,6 @@ h1, h2 {
 }
 
 a {
-    text-size-adjust: 20px;
     color: white;
     text-decoration: underline;
 }
@@ -349,4 +348,12 @@ p{
     to {
         opacity: 1;
     }
+}
+
+.login-form {
+    display: none;
+}
+
+.signup-form {
+    display: block;
 }

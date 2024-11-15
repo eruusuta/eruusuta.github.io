@@ -1,24 +1,58 @@
 <?php
 session_start();
+require_once 'db.php';
 
-// Ensure the user is logged in as an admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['is_admin'] !== 1) {
-    header("Location: login_page.html");
+// Check if user is admin, otherwise redirect to login
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== 1) {
+    header("Location: login_page.php");
     exit();
 }
 
-include 'db.php';
+// Toggle student status (active/inactive)
+if (isset($_GET['toggle_status']) && isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-// Fetch student data including allergies and conditions
-$results = [];
+    // Fetch current status from the users table
+    $userStmt = $conn->prepare("SELECT status FROM users WHERE id = :id");
+    $userStmt->bindParam(':id', $id);
+    $userStmt->execute();
+    $user = $userStmt->fetch(PDO::FETCH_ASSOC);
 
-try {
-    $sql = "SELECT id, name, email, lrn, emergency_phone, address, gender, age, allergies, conditions FROM students";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error fetching student data: " . $e->getMessage();
+    if ($user) {
+        // Toggle status: active (text) <-> inactive (text)
+        $newStatus = ($user['status'] == 'active') ? 'inactive' : 'active';
+
+        // Update status in users table
+        $updateUserStmt = $conn->prepare("UPDATE users SET status = :status WHERE id = :id");
+        $updateUserStmt->bindParam(':status', $newStatus, PDO::PARAM_STR);
+        $updateUserStmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $updateUserStmt->execute();
+
+        // Optionally update students' status (if needed)
+        $updateStudentStmt = $conn->prepare("UPDATE students SET status = :status WHERE id = :id");
+        $updateStudentStmt->bindParam(':status', $newStatus, PDO::PARAM_STR);
+        $updateStudentStmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $updateStudentStmt->execute();
+
+        // Redirect back to student list page to prevent resubmission
+        header("Location: student_list.php");
+        exit();
+    }
+}
+
+// Fetch the list of students
+$stmt = $conn->prepare("SELECT id, name, email, lrn, emergency_phone, address, gender, age, allergies, conditions, status FROM students");
+$stmt->execute();
+$students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// If no students are found, handle gracefully without debugging output
+if (empty($students)) {
+    echo "No students found!";
+} else {
+    foreach ($students as $student) {
+        // Determine the button text based on student status
+        $buttonText = ($student['status'] == 'active') ? 'Deactivate' : 'Activate';
+    }
 }
 ?>
 
@@ -132,7 +166,6 @@ try {
     background-color: darkred;
 }
 </style>
-
 </head>
 <body>
     <a href="inventory_management.html" class="back-buttons">Back</a>
@@ -150,25 +183,32 @@ try {
                     <th>Age</th>
                     <th>Allergies</th>
                     <th>Conditions</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (!empty($results)): ?>
-                    <?php foreach ($results as $row): ?>
+                <?php if (!empty($students)): ?>
+                    <?php foreach ($students as $student): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($row['name']); ?></td>
-                            <td><?php echo htmlspecialchars($row['email']); ?></td>
-                            <td><?php echo htmlspecialchars($row['lrn']); ?></td>
-                            <td><?php echo htmlspecialchars($row['emergency_phone']); ?></td>
-                            <td><?php echo htmlspecialchars($row['address']); ?></td>
-                            <td><?php echo htmlspecialchars($row['gender']); ?></td>
-                            <td><?php echo htmlspecialchars($row['age']); ?></td>
-                            <td><?php echo htmlspecialchars($row['allergies']); ?></td>
-                            <td><?php echo htmlspecialchars($row['conditions']); ?></td>
+                            <td><?php echo htmlspecialchars($student['name']); ?></td>
+                            <td><?php echo htmlspecialchars($student['email']); ?></td>
+                            <td><?php echo htmlspecialchars($student['lrn']); ?></td>
+                            <td><?php echo htmlspecialchars($student['emergency_phone']); ?></td>
+                            <td><?php echo htmlspecialchars($student['address']); ?></td>
+                            <td><?php echo htmlspecialchars($student['gender']); ?></td>
+                            <td><?php echo htmlspecialchars($student['age']); ?></td>
+                            <td><?php echo htmlspecialchars($student['allergies']); ?></td>
+                            <td><?php echo htmlspecialchars($student['conditions']); ?></td>
+                            <td><?php echo htmlspecialchars($student['status']); ?></td>
                             <td class="actions">
-                                <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
-                                <a href="delete_student.php?id=<?php echo $row['id']; ?>" class="delete" onclick="return confirm('Are you sure?')">Delete</a>
+                                <?php if ($student['status'] == 'active'): ?>
+                                    <a href="?toggle_status=true&id=<?php echo $student['id']; ?>" class="delete">Deactivate</a>
+                                <?php else: ?>
+                                    <a href="?toggle_status=true&id=<?php echo $student['id']; ?>" class="edit-button">Activate</a>
+                                <?php endif; ?>
+                                <a href="edit_student.php?id=<?php echo $student['id']; ?>" class="edit-button">Edit</a>
+                                <a href="delete_student.php?id=<?php echo $student['id']; ?>" class="delete" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
