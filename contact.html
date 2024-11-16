@@ -1,130 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Asian Learning Center</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
 
-        /* Body Styling */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #121212;
-            color: #E0E0E0;
-        }
+      /* Body Styling */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #121212;
+        color: #e0e0e0;
+      }
 
-        /* Container */
+      /* Container */
+      .container {
+        background-color: #1c1c1c;
+        padding: 40px;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        text-align: center;
+      }
+
+      /* Back Button */
+      .back-button {
+        display: inline-block;
+        color: #ffd700;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+      .back-button:hover {
+        color: #ffa500;
+      }
+
+      /* Heading */
+      h1 {
+        font-size: 2.5rem;
+        color: #ffd700;
+        margin-bottom: 20px;
+      }
+
+      /* Form Styling */
+      .form-control {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #333333;
+        color: #e0e0e0;
+        font-size: 1rem;
+      }
+
+      .form-control::placeholder {
+        color: #888888;
+      }
+
+      /* Button */
+      .button2 {
+        background-color: #ffd700;
+        color: #121212;
+        padding: 12px;
+        width: 100%;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .button2:hover {
+        background-color: #ffa500;
+        transform: scale(1.05);
+      }
+
+      /* Email Us Link */
+      .email {
+        color: #b0b0b0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-weight: bold;
+      }
+
+      .email:hover {
+        color: #ffd700;
+      }
+
+      /* Small Screen Adjustments */
+      @media screen and (max-width: 768px) {
         .container {
-            background-color: #1C1C1C;
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            text-align: center;
+          padding: 20px;
         }
 
-        /* Back Button */
-        .back-button {
-            display: inline-block;
-            color: #FFD700;
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        .back-button:hover {
-            color: #FFA500;
-        }
-
-        /* Heading */
         h1 {
-            font-size: 2.5rem;
-            color: #FFD700;
-            margin-bottom: 20px;
+          font-size: 2rem;
         }
-
-        /* Form Styling */
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #333333;
-            color: #E0E0E0;
-            font-size: 1rem;
-        }
-
-        .form-control::placeholder {
-            color: #888888;
-        }
-
-        /* Button */
-        .button2 {
-            background-color: #FFD700;
-            color: #121212;
-            padding: 12px;
-            width: 100%;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .button2:hover {
-            background-color: #FFA500;
-            transform: scale(1.05);
-        }
-
-        /* Email Us Link */
-        .email {
-            color: #B0B0B0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: bold;
-        }
-
-        .email:hover {
-            color: #FFD700;
-        }
-
-        /* Small Screen Adjustments */
-        @media screen and (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <a href="home.html" class="back-button">← Back</a>
-        <h1>Contact Us</h1>
-        <form id="contactForm" action="send_message2.php" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required class="form-control">
-            <input type="email" name="email" placeholder="Your Email" required class="form-control">
-            <input type="text" name="phone" placeholder="Your Phone" class="form-control">
-            <textarea name="message" placeholder="Your Message" required class="form-control"></textarea>
-            <button type="submit" class="button2">Send Message</button>
-            <a href="mailto:examplehealthcard@gmail.com" class="email">Email Us</a>
-        </form>
+      <a href="index2.html" class="back-button">← Back</a>
+      <h1>Contact Us</h1>
+      <form id="contactForm" action="send_message2.php" method="POST">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          class="form-control"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+          class="form-control"
+        />
+        <input
+          type="text"
+          name="phone"
+          placeholder="Your Phone"
+          class="form-control"
+        />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+          class="form-control"
+        ></textarea>
+        <button type="submit" class="button2">Send Message</button>
+        <a href="mailto:examplehealthcard@gmail.com" class="email">Email Us</a>
+      </form>
     </div>
-</body>
+  </body>
 </html>

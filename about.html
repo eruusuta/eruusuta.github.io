@@ -1,130 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About - Asian Learning Center Health Card System</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0d0d0d, #121212);
-            color: #E0E0E0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            padding: 20px;
-        }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(135deg, #0d0d0d, #121212);
+        color: #e0e0e0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
 
-        .about-container {
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 800px;
-            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.6);
-            animation: fadeIn 2s ease-out;
-        }
+      .about-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        padding: 40px;
+        width: 100%;
+        max-width: 800px;
+        box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.6);
+        animation: fadeIn 2s ease-out;
+      }
 
-        .typewriter h2 {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #FFD700;
-            width: 0;
-            animation: typing 4s steps(40) 1s forwards, blink 0.75s step-end infinite;
-        }
+      .typewriter h2 {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #ffd700;
+        width: 0;
+        animation: typing 4s steps(40) 1s forwards,
+          blink 0.75s step-end infinite;
+      }
 
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
+      @keyframes typing {
+        from {
+          width: 0;
         }
-
-        @keyframes blink {
-            50% {
-                border-color: transparent;
-            }
+        to {
+          width: 100%;
         }
+      }
 
-        h1, h2 {
-            color: #FFD700;
-            font-weight: 700;
-            margin-bottom: 20px;
+      @keyframes blink {
+        50% {
+          border-color: transparent;
         }
+      }
 
-        .about-text {
-            font-size: 1.2rem;
-            color: #D3D3D3;
-            line-height: 1.8;
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
+      h1,
+      h2 {
+        color: #ffd700;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
 
-        .cta-button {
-            background-color: #FFD700;
-            color: #121212;
-            padding: 14px 25px;
-            font-size: 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s;
-        }
+      .about-text {
+        font-size: 1.2rem;
+        color: #d3d3d3;
+        line-height: 1.8;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
 
-        .cta-button:hover {
-            transform: scale(1.05);
-            background-color: #FFD700;
-            color: #121212;
-        }
+      .cta-button {
+        background-color: #ffd700;
+        color: #121212;
+        padding: 14px 25px;
+        font-size: 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s;
+      }
 
-        .links a {
+      .cta-button:hover {
+        transform: scale(1.05);
+        background-color: #ffd700;
+        color: #121212;
+      }
+
+      .links a {
         text-decoration: none;
-        color: #B0B0B0;
+        color: #b0b0b0;
         margin: 20px 25px;
         font-weight: 500;
-        padding: 10px 20px;  
-        background-color: transparent; 
-        border-radius: 5px;  
+        padding: 10px 20px;
+        background-color: transparent;
+        border-radius: 5px;
         transition: background-color 0.3s ease, color 0.3s;
         margin: 20px 30px;
         padding: 12px 24px;
-    }
+      }
 
-    .links a:hover {
-        color: #FFD700; 
+      .links a:hover {
+        color: #ffd700;
         background-color: rgba(255, 215, 0, 0.2);
-        transform: translateY(-5px); 
-    }
-
+        transform: translateY(-5px);
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="about-container">
-        <div class="typewriter">
-            <h2>Welcome to the Asian Learning Center Health Card System</h2>
-        </div>
-        <p class="about-text">
-            The Asian Learning Center Health Card System is designed to enhance the healthcare experience for students. Our mission is to provide a comprehensive, user-friendly platform that allows students to manage their health records easily. Join us in fostering a culture of health awareness and responsibility at Asian Learning Center.
-        </p>
-        <button class="cta-button">Learn More</button>
+      <div class="typewriter">
+        <h2>Welcome to the Asian Learning Center Health Card System</h2>
+      </div>
+      <p class="about-text">
+        The Asian Learning Center Health Card System is designed to enhance the
+        healthcare experience for students. Our mission is to provide a
+        comprehensive, user-friendly platform that allows students to manage
+        their health records easily. Join us in fostering a culture of health
+        awareness and responsibility at Asian Learning Center.
+      </p>
+      <button class="cta-button">Learn More</button>
     </div>
 
     <div class="links">
-        <a href="home.html">Home</a>
-        <a href="contact.html">Contact</a>
+      <a href="index2.html">Home</a>
+      <a href="contact.html">Contact</a>
     </div>
-
-</body>
+  </body>
 </html>

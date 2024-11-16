@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <li><a class="back-button" href="home.html">Home</a></li>
+    <li><a class="back-button" href="index2.html">Home</a></li>
     <div class="container">
         <h1 class="healthcard">Health Card</h1>
 
