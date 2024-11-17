@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Send the reset email
         $mail = new PHPMailer(true);
-        $resetLink = "https://healthcard.netfy.info/reset_password.php?token=$token"; // Replace with your actual domain
+        $resetLink = "http://localhost/reset_password.php?token=$token"; // Replace with your actual domain
 
         try {
             // Server settings
